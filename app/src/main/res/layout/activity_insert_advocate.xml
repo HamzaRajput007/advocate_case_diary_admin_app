@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    tools:context=".Activities.InsertAdvocate">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Click below image to select your profile picture"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:id="@+id/selectImageTextViewID"
+                android:textSize="12dp"/>
+            <de.hdodenhof.circleimageview.CircleImageView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/profile_image"
+                android:layout_width="96dp"
+                android:src="@drawable/profile_pic_placeholder"
+                android:layout_height="96dp"
+                android:layout_margin="20dp"
+                android:layout_gravity="center_horizontal"
+                app:civ_border_width="2dp"
+                app:civ_border_color="#FF000000"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="32dp"
+                android:textColor="@color/grey_dark"
+                android:text="ADD ADVOCATES"
+                android:textStyle="bold"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="30dp"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="20dp"
+                android:id="@+id/advocateNameID"
+                android:background="@drawable/edit_text_bg"
+                android:hint="NAME*"
+                android:paddingLeft="20dp"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="20dp"
+                android:id="@+id/emailNameID"
+                android:inputType="textEmailAddress"
+                android:background="@drawable/edit_text_bg"
+                android:hint="EMAIL*"
+                android:paddingLeft="20dp"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="20dp"
+                android:inputType="textPhonetic"
+                android:id="@+id/cnicNameID"
+                android:background="@drawable/edit_text_bg"
+                android:hint="CNIC*"
+                android:paddingLeft="20dp"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="20dp"
+                android:id="@+id/cityNameID"
+                android:background="@drawable/edit_text_bg"
+                android:hint="CITY*"
+                android:paddingLeft="20dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <EditText
+                    android:id="@+id/experienceNameID"
+                    android:layout_width="150dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="20dp"
+                    android:background="@drawable/edit_text_bg"
+                    android:hint="EXPERIENCE*"
+                    android:paddingLeft="20dp" />
+
+                <EditText
+                    android:id="@+id/educationNameID"
+                    android:layout_width="150dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="20dp"
+                    android:background="@drawable/edit_text_bg"
+                    android:hint="EDUCATION"
+                    android:paddingLeft="20dp" />
+            </LinearLayout>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/addAdvocateBtnId"
+                android:text="Submit"
+                android:background="@drawable/btn_bg"
+                android:textColor="@color/white"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="30dp"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"/>
+        </LinearLayout>
+    </ScrollView>
+
+
+
+</LinearLayout>

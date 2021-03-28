@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "410682864303",
+    "project_id": "advocate-case-diary-6a425",
+    "storage_bucket": "advocate-case-diary-6a425.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:410682864303:android:75b0ef5f215967ea75da5a",
+        "android_client_info": {
+          "package_name": "apps.webscare.advocatecasediaryadmin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "410682864303-svbmo7523vj8paca8q55kqp4juuobva6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDEH2w4Ker1BdguWiX0lmzQvdYPD_OQbJE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "410682864303-svbmo7523vj8paca8q55kqp4juuobva6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:410682864303:android:b1526839784e789a75da5a",
+        "android_client_info": {
+          "package_name": "apps.webscare.digitallawer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "410682864303-svbmo7523vj8paca8q55kqp4juuobva6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDEH2w4Ker1BdguWiX0lmzQvdYPD_OQbJE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "410682864303-svbmo7523vj8paca8q55kqp4juuobva6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
