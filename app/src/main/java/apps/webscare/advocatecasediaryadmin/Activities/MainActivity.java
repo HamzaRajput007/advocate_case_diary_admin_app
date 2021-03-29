@@ -1,6 +1,7 @@
 package apps.webscare.advocatecasediaryadmin.Activities;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -19,7 +20,9 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 
 import apps.webscare.advocatecasediaryadmin.R;
 
@@ -70,20 +73,18 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void onSuccess(AuthResult authResult) {
                             uId = mAuth.getCurrentUser().getUid();
-                            mFirestore.collection("Users").document(uId).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                            mFirestore.collection("Admins").document(uId).addSnapshotListener( new EventListener<DocumentSnapshot>() {
                                 @Override
-                                public void onSuccess(DocumentSnapshot documentSnapshot) {
-                                    String accountType = documentSnapshot.getString("type") ;
-//                                    String[] accountTypes = {"--Select Account Type--","Customer" , "Advocate" , "Admin"};
+                                public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
 
                                 }
                             });
 
                             progressBar.setVisibility(View.GONE);
                             Toast.makeText(MainActivity.this, "User Logged In Successfully", Toast.LENGTH_SHORT).show();
-//                            Intent toHome = new Intent(MainActivity.this , ClientHome.class);
-//                            startActivity(toHome);
-//                            finish();
+                            Intent toHome = new Intent(MainActivity.this , Home.class);
+                            startActivity(toHome);
+                            finish();
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override

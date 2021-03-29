@@ -100,7 +100,7 @@ public class SignUp extends AppCompatActivity {
                                 userDetailsMap.put("phone", phone);
                                 userDetailsMap.put("CNIC" , idCardNumber);
                                 userDetailsMap.put("type", "Admin");
-                                mFireStore.collection("Users").document(uID).set(userDetailsMap).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                mFireStore.collection("Admins").document(uID).set(userDetailsMap).addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void aVoid) {
                                         Toast.makeText(SignUp.this, "Loaded Users Data in FireStore", Toast.LENGTH_SHORT).show();
