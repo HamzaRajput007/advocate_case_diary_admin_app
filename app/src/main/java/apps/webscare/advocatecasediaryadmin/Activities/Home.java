@@ -38,7 +38,7 @@ public class Home extends AppCompatActivity {
     ImageView cloudBtnImageView;
     Uri filePath;
     private StorageReference storageReference;
-    private DatabaseReference mDatabase;
+    private DatabaseReference mDatabaseReference;
     EditText editTextName;
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -46,7 +46,7 @@ public class Home extends AppCompatActivity {
         if (requestCode == PICK_IMAGE_REQUEST) {
             if (data != null) {
                 filePath = data.getData();
-                uploadFile();    
+                uploadFile(filePath);
             }else{
                 Toast.makeText(this, "No Files Selected", Toast.LENGTH_SHORT).show();
             }
@@ -60,7 +60,7 @@ public class Home extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         storageReference = FirebaseStorage.getInstance().getReference();
-        mDatabase = FirebaseDatabase.getInstance().getReference(Constants.DATABASE_PATH_UPLOADS);
+        mDatabaseReference = FirebaseDatabase.getInstance().getReference(Constants.DATABASE_PATH_UPLOADS);
 
         updateSchedule = findViewById(R.id.updateSchedule);
         cloudBtnImageView = findViewById(R.id.cloudBtn);
@@ -108,6 +108,38 @@ public class Home extends AppCompatActivity {
         return mime.getExtensionFromMimeType(cR.getType(uri));
     }
 
+    private void uploadFile(Uri data) {
+        final ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.setTitle("Uploading");
+        progressDialog.show();
+        StorageReference sRef = storageReference.child(Constants.STORAGE_PATH_UPLOADS + "Schedule" + ".pdf");
+        sRef.putFile(data)
+                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @SuppressWarnings("VisibleForTests")
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        progressDialog.dismiss();
+                        Toast.makeText(Home.this, "Schedule Uploaded Successfully", Toast.LENGTH_SHORT).show();
+                        Upload upload = new Upload("Schedule", taskSnapshot.getStorage().getDownloadUrl().toString());
+                        mDatabaseReference.child(mDatabaseReference.push().getKey()).setValue(upload);
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception exception) {
+                        Toast.makeText(getApplicationContext(), exception.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                })
+                .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                    @SuppressWarnings("VisibleForTests")
+                    @Override
+                    public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+                        double progress = (100.0 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount();
+                    }
+                });
+
+    }
+    
     private void uploadFile() {
         //checking if file is available
         if (filePath != null) {
@@ -117,7 +149,7 @@ public class Home extends AppCompatActivity {
             progressDialog.show();
 
             //getting the storage reference
-            StorageReference sRef = storageReference.child(Constants.STORAGE_PATH_UPLOADS + System.currentTimeMillis() + "." + getFileExtension(filePath));
+            StorageReference sRef = storageReference.child(Constants.STORAGE_PATH_UPLOADS + "Schedule" + "." + getFileExtension(filePath));
 
             //adding the file to reference
             sRef.putFile(filePath)
@@ -134,8 +166,8 @@ public class Home extends AppCompatActivity {
                             Upload upload = new Upload("Court Cases Schedule", taskSnapshot.toString());
 
                             //adding an upload to firebase database
-                            String uploadId = mDatabase.push().getKey();
-                            mDatabase.child(uploadId).setValue(upload);
+                            String uploadId = mDatabaseReference.push().getKey();
+                            mDatabaseReference.child(uploadId).setValue(upload);
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {
