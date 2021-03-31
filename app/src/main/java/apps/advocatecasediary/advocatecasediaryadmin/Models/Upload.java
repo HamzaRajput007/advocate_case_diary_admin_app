@@ -1,4 +1,4 @@
-package apps.webscare.advocatecasediaryadmin.Models;
+package apps.advocatecasediary.advocatecasediaryadmin.Models;
 public class Upload{
 
     public String name;

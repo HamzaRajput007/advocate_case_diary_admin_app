@@ -1,4 +1,4 @@
-package apps.webscare.advocatecasediaryadmin.Activities;
+package apps.advocatecasediary.advocatecasediaryadmin.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,7 +24,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.HashMap;
 import java.util.Map;
 
-import apps.webscare.advocatecasediaryadmin.R;
+import apps.advocatecasediary.advocatecasediaryadmin.R;
 
 public class SignUp extends AppCompatActivity {
 
@@ -94,7 +94,7 @@ public class SignUp extends AppCompatActivity {
                                 phoneNumberET.setText("");
                                 fullNameET.setText("");
                                 progressBar.setVisibility(View.GONE);
-                                uID = mAuth.getCurrentUser().getUid();
+                                uID = mAuth.getCurrentUser().   getUid();
                                 Map<String, Object> userDetailsMap = new HashMap<>();
                                 userDetailsMap.put("name", name);
                                 userDetailsMap.put("phone", phone);

@@ -1,4 +1,4 @@
-package apps.webscare.advocatecasediaryadmin.Activities;
+package apps.advocatecasediary.advocatecasediaryadmin.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -28,9 +28,9 @@ import com.google.firebase.storage.UploadTask;
 
 import java.text.BreakIterator;
 
-import apps.webscare.advocatecasediaryadmin.Constants;
-import apps.webscare.advocatecasediaryadmin.Models.Upload;
-import apps.webscare.advocatecasediaryadmin.R;
+import apps.advocatecasediary.advocatecasediaryadmin.Constants;
+import apps.advocatecasediary.advocatecasediaryadmin.Models.Upload;
+import apps.advocatecasediary.advocatecasediaryadmin.R;
 
 public class Home extends AppCompatActivity {
     int PICK_IMAGE_REQUEST = 1;

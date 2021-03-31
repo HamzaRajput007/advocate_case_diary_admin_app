@@ -1,4 +1,4 @@
-package apps.webscare.advocatecasediaryadmin;
+package apps.advocatecasediary.advocatecasediaryadmin;
 
 public class Constants {
     public static final String STORAGE_PATH_UPLOADS = "uploads/";

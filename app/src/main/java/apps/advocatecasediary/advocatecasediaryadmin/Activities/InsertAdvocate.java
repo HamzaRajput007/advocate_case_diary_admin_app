@@ -1,4 +1,4 @@
-package apps.webscare.advocatecasediaryadmin.Activities;
+package apps.advocatecasediary.advocatecasediaryadmin.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,7 +19,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.HashMap;
 import java.util.Map;
 
-import apps.webscare.advocatecasediaryadmin.R;
+import apps.advocatecasediary.advocatecasediaryadmin.R;
 
 public class InsertAdvocate extends AppCompatActivity {
 
