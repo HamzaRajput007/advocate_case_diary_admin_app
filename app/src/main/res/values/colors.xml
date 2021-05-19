@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-<color name="colorPrimary">#064066</color>
-<color name="colorPrimaryDark">#6200EE</color>
-<color name="colorAccent">#03DAC5</color>
-<color name="golden">#DCA74B</color>
-<color name="white">#ffffff</color>
-<color name="grey">#DCDCDC</color>
-<color name="grey_dark">#757575</color>
+    <color name="colorPrimary">#064066</color>
+    <color name="colorPrimaryDark">#6200EE</color>
+    <color name="colorAccent">#03DAC5</color>
+    <color name="golden">#DCA74B</color>
+    <color name="white">#ffffff</color>
+    <color name="splash_bg">#5e849c</color>
+    <color name="grey">#DCDCDC</color>
+    <color name="grey_dark">#757575</color>
 </resources>
