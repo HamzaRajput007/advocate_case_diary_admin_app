@@ -19,14 +19,18 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.text.BreakIterator;
+import java.util.HashMap;
+import java.util.Map;
 
 import apps.webscare.advocatecasediaryadmin.Constants;
 import apps.webscare.advocatecasediaryadmin.Models.Upload;
@@ -39,6 +43,8 @@ public class Home extends AppCompatActivity {
     Uri filePath;
     private StorageReference storageReference;
     private DatabaseReference mDatabase;
+    FirebaseFirestore firebaseFirestore;
+
     EditText editTextName;
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -61,6 +67,7 @@ public class Home extends AppCompatActivity {
 
         storageReference = FirebaseStorage.getInstance().getReference();
         mDatabase = FirebaseDatabase.getInstance().getReference(Constants.DATABASE_PATH_UPLOADS);
+        firebaseFirestore = FirebaseFirestore.getInstance();
 
         updateSchedule = findViewById(R.id.updateSchedule);
         cloudBtnImageView = findViewById(R.id.cloudBtn);
@@ -117,7 +124,7 @@ public class Home extends AppCompatActivity {
             progressDialog.show();
 
             //getting the storage reference
-            StorageReference sRef = storageReference.child(Constants.STORAGE_PATH_UPLOADS + System.currentTimeMillis() + "." + getFileExtension(filePath));
+            StorageReference sRef = storageReference.child(Constants.STORAGE_PATH_UPLOADS + "Schedule" + "." + getFileExtension(filePath));
 
             //adding the file to reference
             sRef.putFile(filePath)
@@ -127,8 +134,6 @@ public class Home extends AppCompatActivity {
                             //dismissing the progress dialog
                             progressDialog.dismiss();
 
-                            //displaying success toast
-                            Toast.makeText(getApplicationContext(), "File Uploaded ", Toast.LENGTH_LONG).show();
 
                             //creating the upload object to store uploaded image details
                             Upload upload = new Upload("Court Cases Schedule", taskSnapshot.toString());
@@ -136,8 +141,42 @@ public class Home extends AppCompatActivity {
                             //adding an upload to firebase database
                             String uploadId = mDatabase.push().getKey();
                             mDatabase.child(uploadId).setValue(upload);
-                        }
-                    })
+
+                            if (taskSnapshot.getMetadata() != null) {
+                                if (taskSnapshot.getMetadata().getReference() != null) {
+                                    Task<Uri> result = taskSnapshot.getStorage().getDownloadUrl();
+                                    result.addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                        @Override
+                                        public void onSuccess(Uri uri) {
+                                            String downlodUrl = uri.toString();
+                                            Toast.makeText(Home.this, "URL : " + downlodUrl, Toast.LENGTH_SHORT).show();
+                                            final Map<String, Object> advocateDataMap = new HashMap<>();
+                                            if (downlodUrl != null)
+                                                advocateDataMap.put("image_url" , downlodUrl);
+                                                advocateDataMap.put("name" , "Schedule");
+                                            firebaseFirestore.collection("Schedules").document("Schedule").set(advocateDataMap).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                @Override
+                                                public void onSuccess(Void aVoid) {
+                                                    //displaying success toast
+                                                    Toast.makeText(getApplicationContext(), "File Uploaded ", Toast.LENGTH_LONG).show();
+                                                }
+                                            });
+                                          /*else
+                                                Intent toMain = new Intent(SignUp.this, MainActivity.class);
+                                                    startActivity(toMain);
+                                                    finish();*/
+                                                }
+                                            }).addOnFailureListener(new OnFailureListener() {
+                                                @Override
+                                                public void onFailure(@NonNull Exception e) {
+                                                    /*Toast.makeText(SignUp.this, "Failed to upload image", Toast.LENGTH_SHORT).show();
+                                                    progressBar.setVisibility(View.GONE);*/
+                                                }
+                                            });
+                                        }
+                                    }
+                                }
+                            })
                     .addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception exception) {

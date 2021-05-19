@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
     FirebaseAuth mAuth;
     FirebaseFirestore mFirestore;
     Spinner accountTypeSpinner;
+    TextView forgotPasswordTv;
 
     String uId;
     @Override
@@ -47,7 +48,20 @@ public class MainActivity extends AppCompatActivity {
         signUpBtn = findViewById(R.id.signUpTextViewId);
         btnLogin = findViewById(R.id.loginBtnID);
         progressBar = findViewById(R.id.progressbarId);
+        forgotPasswordTv = findViewById(R.id.forgotPasswordTextViewId);
+        forgotPasswordTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent toForgotPasswod = new Intent(MainActivity.this, ForgotPassword.class);
+                if(TextUtils.isEmpty(emailET.getText().toString())){
+                    emailET.setError("Enter Your Email Here !");
+                }else{
+                    toForgotPasswod.putExtra("email" , emailET.getText().toString());
+                    startActivity(toForgotPasswod);
+                }
 
+            }
+        });
         signUpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
