@@ -9,17 +9,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activities.ForgotPassword"></activity>
-        <activity android:name=".Activities.InsertAdvocate" />
-        <activity android:name=".Activities.Home" />
-        <activity android:name=".Activities.SignUp" />
-        <activity android:name=".Activities.MainActivity">
+        <activity
+            android:name="apps.advocatecasediary.advocatecasediaryadmin.Activities.AboutUs"
+            android:theme="@style/Theme2" />
+        <activity android:name="apps.advocatecasediary.advocatecasediaryadmin.Activities.ForgotPassword" />
+        <activity android:name="apps.advocatecasediary.advocatecasediaryadmin.Activities.InsertAdvocate" />
+        <activity android:name="apps.advocatecasediary.advocatecasediaryadmin.Activities.Home" />
+        <activity android:name="apps.advocatecasediary.advocatecasediaryadmin.Activities.SignUp" />
+        <activity android:name="apps.advocatecasediary.advocatecasediaryadmin.Activities.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="apps.advocatecasediary.advocatecasediaryadmin.Activities.MainActivity"></activity>
     </application>
 
 </manifest>

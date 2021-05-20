@@ -1,4 +1,4 @@
-package apps.webscare.advocatecasediaryadmin.Activities;
+package apps.advocatecasediary.advocatecasediaryadmin.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;

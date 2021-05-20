@@ -1,4 +1,4 @@
-package apps.webscare.advocatecasediaryadmin.Activities;
+package apps.advocatecasediary.advocatecasediaryadmin.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -12,7 +12,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
 import apps.advocatecasediary.advocatecasediaryadmin.Activities.MainActivity;
-import apps.advocatecasediary.advocatecasediaryadmin.R;
+import apps.webscare.advocatecasediaryadmin.R;
 
 public class Splash extends AppCompatActivity {
 

@@ -3,6 +3,7 @@ package apps.advocatecasediary.advocatecasediaryadmin.Activities;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import apps.webscare.advocatecasediaryadmin.R;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -24,7 +25,6 @@ import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 
-import apps.advocatecasediary.advocatecasediaryadmin.R;
 
 public class MainActivity extends AppCompatActivity {
     EditText emailET  , passwordET;

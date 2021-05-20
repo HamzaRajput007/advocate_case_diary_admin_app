@@ -1,4 +1,4 @@
-package apps.webscare.advocatecasediaryadmin.Activities;
+package apps.advocatecasediary.advocatecasediaryadmin.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -10,6 +10,9 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.DocumentsContract;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
@@ -23,6 +26,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.internal.InternalTokenProvider;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
@@ -32,8 +36,8 @@ import java.text.BreakIterator;
 import java.util.HashMap;
 import java.util.Map;
 
-import apps.webscare.advocatecasediaryadmin.Constants;
-import apps.webscare.advocatecasediaryadmin.Models.Upload;
+import apps.advocatecasediary.advocatecasediaryadmin.Constants;
+import apps.advocatecasediary.advocatecasediaryadmin.Models.Upload;
 import apps.webscare.advocatecasediaryadmin.R;
 
 public class Home extends AppCompatActivity {
@@ -107,6 +111,25 @@ public class Home extends AppCompatActivity {
                 startActivityForResult(intent, PICK_IMAGE_REQUEST);
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.home_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.aboutUsMenuItemId:
+                Intent toAboutUs = new Intent(Home.this , AboutUs.class);
+                startActivity(toAboutUs);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     public String getFileExtension(Uri uri) {

@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Advocate Case Diary Admin</string>
+    <string name="about_us_text"><![CDATA[The main purpose of our project is to design & develop a user-friendly application which helps not only the customers of the advocates but also to the employees, suppliers by making their job easier. We know that in all over Pakistan there are many Advocate offices where work is done Manually. To manually handle any system was a very difficult task Through this application, we can help the people to increase the growth of Advocate Case Tool & also reduce their hectic schedule.]]></string>
+
 </resources>
